@@ -1,0 +1,15 @@
+---
+title: "Seven Wonders of the World"
+author: "Akansh"
+date: "10/23/2020"
+output: html_document
+---
+
+```{r,echo=F,warning=FALSE,error=FALSE,message=FALSE}
+library(leaflet)
+
+wonders<-data.frame(lat=c(27.175015,41.890251,-13.163068,40.431908,-22.951916,30.328960,20.66667),lng=c(78.042155,12.492373,-72.545128,116.570374,-43.210487,35.444832,-88.56667),popup=c("Taj Mahal","Colosseum","Machu Picchu","The great wall of China","Christ the redeemer","Petra","Chichén-Itzá"),colors=c("white","brown","green","yellow","blue","magenta","silver"))
+
+wonders %>% leaflet() %>% addTiles() %>% addMarkers(popup = wonders$popup) %>% addCircleMarkers(color = wonders$colors) %>% addLegend(labels = wonders$popup,colors = wonders$colors)
+
+```
